@@ -4,6 +4,11 @@ dotenv.config();
 import express from 'express';
 import mongoose from 'mongoose';
 import cors from 'cors';
+import CarnetDeClasse from './models/CarnetDeClasse.js'
+
+
+
+
 
 const app = express();
 app.use(express.json());
@@ -27,6 +32,7 @@ const etudiantSchema = new mongoose.Schema({
 });
 const Etudiant = mongoose.model('Etudiant', etudiantSchema);
 
+
 // Routes de l'API
 app.get('/classes', async (req, res) => {
   const classes = await Classe.find();
@@ -37,6 +43,19 @@ app.post('/etudiants', async (req, res) => {
   const etudiant = new Etudiant(req.body);
   await etudiant.save();
   res.json(etudiant);
+});
+
+// Route pour obtenir tous les partages
+app.get('/carnet', async (req, res) => {
+  const carnet = await CarnetDeClasse.find().populate('etudiant');
+  res.json(carnet);
+});
+
+// Route pour ajouter un partage
+app.post('/carnet', async (req, res) => {
+  const partage = new CarnetDeClasse(req.body);
+  await partage.save();
+  res.json(partage);
 });
 
 // Démarrer le serveur
