@@ -22,7 +22,7 @@ body {
  justify-content: end;
  
 }
-header{
+.App-header{
 background-color: blueviolet;
 
 
@@ -33,9 +33,10 @@ background-color: blueviolet;
   padding: 5px;
 }
 
-h1 {
+h1, p{
   color: white;
-  
+  margin: -0.1rex;
+ 
 }
 h2{
   color: #2c3e50;
@@ -84,6 +85,11 @@ button:hover {
   .App {
     padding: 40px;
   }
+  .App-logo{
+ display: flex;
+ flex-direction: column;
+ 
+}
 
   form {
     display: flex;
@@ -101,6 +107,11 @@ button:hover {
   .App {
     padding: 60px;
   }
+  .App-logo{
+ display: flex;
+ flex-direction: column;
+ 
+}
 
   ul {
     display: flex;
